@@ -41,7 +41,7 @@ fn init_heap() {
 #[no_mangle]
 fn main() -> ! {
     serial_putchar('1');
-    // init_heap();
     serial_putchar('2');
+    // init_heap();
     loop {}
 }
