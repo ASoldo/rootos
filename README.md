@@ -22,5 +22,5 @@ llvm-objdump -d target/aarch64-unknown-none/debug/rootos
 ## Running in QEMU
 
 ```sh
-./run_qemu.sh
+./run_rootos.sh
 ```
