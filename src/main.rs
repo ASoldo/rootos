@@ -31,6 +31,7 @@ fn serial_puts(s: &str) {
 
 #[no_mangle]
 fn main() -> ! {
+    // serial_puts("RootOS");
     serial_putchar('R');
     loop {}
 }
