@@ -1,18 +1,29 @@
 #![no_std]
 #![no_main]
-#![feature(asm_const)]
+#![feature(asm_const, alloc_error_handler)]
+
+extern crate alloc;
 
 use core::arch::global_asm;
 use core::panic::PanicInfo;
 
+mod allocator;
+
 #[no_mangle]
 #[link_section = ".stack"]
-static mut STACK: [u8; 1024] = [0; 1024];
+static mut STACK: [u8; 4096] = [0; 4096]; // Increased stack size for testing
 
 global_asm!(include_str!("boot.s"));
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
+    serial_putchar('P'); // Panic indicator
+    loop {}
+}
+
+#[alloc_error_handler]
+fn alloc_error_handler(_: core::alloc::Layout) -> ! {
+    serial_putchar('E'); // Alloc error indicator
     loop {}
 }
 
@@ -23,15 +34,14 @@ fn serial_putchar(c: char) {
     }
 }
 
-fn serial_puts(s: &str) {
-    for c in s.chars() {
-        serial_putchar(c);
-    }
+fn init_heap() {
+    allocator::init_heap();
 }
 
 #[no_mangle]
 fn main() -> ! {
-    // serial_puts("RootOS");
-    serial_putchar('R');
+    serial_putchar('1');
+    // init_heap();
+    serial_putchar('2');
     loop {}
 }
