@@ -8,6 +8,12 @@ _start:
     add x7, x7, x8
     mov sp, x7
 
+    # Enable floating point bits FPEN
+    mrs x7, cpacr_el1
+    mov x8, #(3 << 20)
+    orr x7, x8, x7
+    msr cpacr_el1, x7
+
     # Call into main
     bl main
 
