@@ -1,3 +1,4 @@
+use crate::serial_putchar;
 use linked_list_allocator::LockedHeap;
 
 #[global_allocator]
@@ -26,12 +27,5 @@ pub fn init_heap() {
         allocator.init(heap_start, heap_size);
         serial_putchar('C'); // After initializing heap
         serial_putchar('O'); // End heap init debug character
-    }
-}
-
-fn serial_putchar(c: char) {
-    let uart_addr = 0x0900_0000 as *mut u8;
-    unsafe {
-        *uart_addr = c as u8;
     }
 }
