@@ -13,6 +13,12 @@
 cargo build -Z build-std=core,compiler_builtins,alloc --target aarch64-unknown-none.json
 ```
 
+## Preview the objdump
+
+```sh
+llvm-objdump -d target/aarch64-unknown-none/debug/rootos
+```
+
 ## Running in QEMU
 
 ```sh
