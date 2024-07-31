@@ -4,7 +4,7 @@
 _start:
     # Initialize the stack
     adr x7, _stack
-    mov x8, #4096
+    mov x8, #8192
     add x7, x7, x8
     mov sp, x7
 
@@ -22,4 +22,4 @@ _start:
 
 .section .bss
 _stack:
-    .skip 4096
+    .skip 8192

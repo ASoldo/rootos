@@ -1,5 +1,6 @@
 #!/bin/bash
 qemu-system-aarch64 \
+    -s -S \
     -M virt \
     -cpu cortex-a76 \
     -kernel target/aarch64-unknown-none/debug/rootos \

@@ -11,7 +11,7 @@ mod allocator;
 
 #[no_mangle]
 #[link_section = ".stack"]
-static mut STACK: [u8; 4096] = [0; 4096];
+static mut STACK: [u8; 8192] = [0; 8192];
 
 global_asm!(include_str!("boot.s"));
 
@@ -34,11 +34,18 @@ fn serial_putchar(c: char) {
     }
 }
 
+fn serial_puts(s: &str) {
+    for c in s.chars() {
+        serial_putchar(c);
+    }
+}
+
 #[no_mangle]
 fn main() -> ! {
     // serial_putchar('1');
     // allocator::init_heap();
     // serial_putchar('2');
+    // serial_puts("OJOH");
 
     serial_putchar('A');
     serial_putchar('B');
