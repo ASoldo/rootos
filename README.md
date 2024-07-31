@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/2d073947-5282-44db-8c06-6c64d32c01d4)
+
 # rootos
 
 `rootos` is a minimal bare-metal OS kernel for AArch64, written in Rust.
