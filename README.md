@@ -32,7 +32,7 @@ llvm-objdump -d target/aarch64-unknown-none/debug/rootos
 In a separate terminal, start GDB:
 
 ```sh
-gdb target/aarch64-unknown-none/debug/rootos
+rust-gdb target/aarch64-unknown-none/debug/rootos
 ```
 
 Connect GDB to the QEMU GDB server:
