@@ -15,7 +15,7 @@ panic = "abort"
 panic = "abort"
 
 [build]
-rustflags = ["-C", "link-arg=-Tmemory.x"]
+rustflags = ["-C", "link-arg=-Tlinker.ld"]
 target = "aarch64-unknown-none.json"
 
 [patch.crates-io]
